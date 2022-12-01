@@ -7,3 +7,35 @@ const cityLabel = document.getElementById("cityLabel"); //label nama city yang t
 const inputCity = document.getElementById("inputCity");
 const inputDate = document.getElementById("inputDate");
 const inputButton = document.getElementById("inputButton");
+
+let chosenCity;
+let chosenDate;
+
+async function getData () {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'INPUT KEY',
+            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+        }
+    };
+
+    try{
+        const resp = await fetch('https://weatherapi-com.p.rapidapi.com/history.json?q=London&dt=2022-11-30&lang=en', options)
+        const data = await resp.json();
+        console.log(data);
+        console.log("data 2 : ", data.forecast.forecastday[0].day)
+        // return displayStats(data);
+    } catch (err) {
+        console.log("failed to fetch : ", err); //REMOVE when submit
+    }
+}
+
+const accessTime = () => {
+
+}
+
+// const displayStats = (data) => { //kurang peluang hujan, waktu akses
+//     let {avgtemp_c:temperature, maxwind_kph:windSpeed, avghumidity, avgvis_km: pressure} = data.forecast.forecastday[0].day;
+//     let {text:condition} = data.forecast.forecastday[0].day.condition;
+// }
