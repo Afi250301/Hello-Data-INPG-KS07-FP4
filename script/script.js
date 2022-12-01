@@ -1,0 +1,9 @@
+const weatherPic = document.getElementById("weatherPic"); //gambar cuaca
+const temp = document.getElementById("temp"); //label suhu di kiri
+const time = documet.getElementById("time"); //label waktu update di kiri
+const weatherText = document.getElementById("weatherText"); //label tulisan weather
+const rainChance = document.getElementById("rainChance"); //label logo hujan disebelah kiri
+const cityLabel = document.getElementById("cityLabel"); //label nama city yang terpilih
+const inputCity = document.getElementById("inputCity");
+const inputDate = document.getElementById("inputDate");
+const inputButton = document.getElementById("inputButton");

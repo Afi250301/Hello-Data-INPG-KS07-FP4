@@ -16,24 +16,24 @@
         <div class="col-4">
                 <div class="row">
                   <div class="col">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" fill="currentColor" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+                    <svg id="weatherPic" xmlns="http://www.w3.org/2000/svg" width="250" height="250" fill="currentColor" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
                         <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
                         <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.734 3.374a2 2 0 1 1 3.296 2.198c.199.281.372.582.516.898a3 3 0 1 0-4.84-3.225c.352.011.696.055 1.028.129zm4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377zM14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
                       </svg>
-                  <h1 class="suhu">12*C</h1>
-                  <h5 class="date">Monday, 16.00</h5>
+                  <h1 id="temp" class="suhu">12*C</h1>
+                  <h5 id="time" class="date">Monday, 16.00</h5>
                   <div class="icon-condition">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
                         <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
                       </svg>
-                    <span> Monstly Cloudy</span> <br>
+                    <span id="weatherText"> Monstly Cloudy</span> <br>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
                         <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317zm3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317zm.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973z"/>
                       </svg>
-                    <span>Rain = 30%</span>
+                    <span id="rainChance">Rain = 30%</span>
                   </div>
                     <div class="col coloums">
-                        <p class="p">New York, NY, USA</p>
+                        <p id="cityLabel" class="p">New York, NY, USA</p>
                     </div> 
                   </div>
                 </div>
@@ -46,14 +46,14 @@
                 <form class="row g-3">
                     <div class="col-auto">
                         <label for="inputCity" class="visually-hidden"></label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="Your City">
+                        <input id="inputCity" type="text" class="form-control" placeholder="Your City">
                       </div>
                     <div class="col-auto">
                       <label for="inputDate" class="visually-hidden"></label>
-                      <input type="date" class="form-control" id="inputDate">
+                      <input id="inputDate" type="date" class="form-control">
                     </div>
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">
+                      <button id="inputButton" type="submit" class="btn btn-primary mb-3">
                         <span class="btn-text">Search</span>
                     </button>
                     </div>
@@ -116,8 +116,6 @@
       </div>
    </div>
 
-   <script>
-
-   </script>
+   <script src="./script/script.js"></script>
 </body>
 </html>
