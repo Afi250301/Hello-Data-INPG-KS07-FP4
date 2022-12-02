@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelloData</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="CSS/Home.css">
 
 </head>
@@ -47,7 +49,7 @@
                       </div>
                     <div class="col-auto">
                       <label for="inputDate" class="visually-hidden"></label>
-                      <input id="inputDate" type="date" class="form-control">
+                      <input id="date" type="text" placeholder="yyyy-mm-dd" class="form-control form-control-lg date-box">
                     </div>
                     <div class="col-auto">
                       <div type="submit" class="btn btn-primary mb-3">
@@ -83,7 +85,7 @@
                                   </svg>
                                   <div class="label">
                                     <p class="word">Feels Like</p> 
-                                  <p id="temp2" class="number">19*</p>
+                                  <p id="temp2" class="number">N/A</p>
                                   </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -92,7 +94,7 @@
                                   </svg>
                                   <div class="label">
                                   <p class="word">Humidity</p> 
-                                  <p id="humidityLabel" class="number">100*</p>
+                                  <p id="humidityLabel" class="number">N/A</p>
                                   </div>
                             </div>
                             <div class="col-6 col-md-3"> 
@@ -101,7 +103,7 @@
                                   </svg>
                                   <div class="label">
                                     <p class="word">Wind</p> 
-                                    <p id="windSpeed" class="number">B 1 km/j</p>
+                                    <p id="windSpeed" class="number">N/A</p>
                                     </div>
                             </div>
                         </div>
@@ -113,7 +115,7 @@
                               </svg>
                               <div class="label2">
                                 <p class="word">Pressure</p>
-                                <p id="windPressure" class="number2">200 mb</p>
+                                <p id="windPressure" class="number2">N/A</p>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -122,7 +124,7 @@
                                   </svg>
                                   <div class="label2">
                                     <p class="word">Rain</p>
-                                    <p id="rainChance" class="number2">55%</p>
+                                    <p id="rainChance" class="number2">N/A</p>
                                     </div>
                             </div>
                             <div class="col-6 col-md-3">
@@ -132,7 +134,7 @@
                               </svg>
                                 <div class="label">
                                   <p class="word">Updated</p>
-                                  <p id="update" class="number">8.00 P.M.</p>
+                                  <p id="update" class="number">N/A</p>
                                   </div>
                             </div>
                         </div>
@@ -142,12 +144,30 @@
       </div>
    </div>
 
+  
 
-  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-  <script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+   <!-- <script>
     moment().format();
-  </script> 
-  <script src="./script/script.js"></script>
-</body>
+   </script> -->
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+      $(function() {
+        $("#date").daterangepicker({
+            singleDatePicker: true,
+            maxDate: moment().toDate(),
+            minDate: moment().subtract(7, 'day').toDate(),
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            showButtonPanel: true,
+            autoApply: true
+        });
+      });
+    </script>
+   <script src="./script/script.js"></script>
+  </body>
 </html>
 

@@ -27,11 +27,15 @@ const rainChance = document.getElementById("rainChance"); //label logo hujan dis
 const update = document.getElementById("update");
 const cityLabel = document.getElementById("cityLabel"); //label nama city yang terpilih
 const inputCity = document.getElementById("inputCity");
-const inputDate = document.getElementById("inputDate");
+const inputDate = document.getElementById("date");
 const inputButton = document.getElementById("inputButton");
 
 let chosenCity;
 let chosenDate;
+
+// const getInput = () => {
+
+// } 
 
 async function getData () {
     const options = {
@@ -45,7 +49,8 @@ async function getData () {
     try{
         const resp = await fetch('https://weatherapi-com.p.rapidapi.com/history.json?q=London&dt=2022-11-30&lang=en', options)
         const data = await resp.json();
-        console.log(data);
+        console.log(data); // REMOVE 
+        console.log('feels like',data.forecast.forecastday[0].hour[5].feelslike_c);//REMOVE
         return displayStats(data);
     } catch (err) {
         console.log("failed to fetch : ", err); //REMOVE when submit
