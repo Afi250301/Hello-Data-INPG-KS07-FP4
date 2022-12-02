@@ -33,9 +33,16 @@ const inputButton = document.getElementById("inputButton");
 let chosenCity;
 let chosenDate;
 
-// const getInput = () => {
+const onSubmit = () => {
+    chosenCity = inputCity.value;
+    chosenDate = inputDate.value;
+    console.log('city = ', chosenCity); //REMOVE
+    console.log('date = ', chosenDate); //REMOVE
 
-// } 
+    chosenCity = chosenCity.replace(/\s/g, '%20')
+    console.log('chosenCity =', chosenCity); //REMOVE
+    getData();
+} 
 
 async function getData () {
     const options = {
@@ -47,7 +54,7 @@ async function getData () {
     };
 
     try{
-        const resp = await fetch('https://weatherapi-com.p.rapidapi.com/history.json?q=London&dt=2022-11-30&lang=en', options)
+        const resp = await fetch(`https://weatherapi-com.p.rapidapi.com/history.json?q=${chosenCity}&dt=${chosenDate}&lang=en`, options)
         const data = await resp.json();
         console.log(data); // REMOVE 
         console.log('feels like',data.forecast.forecastday[0].hour[5].feelslike_c);//REMOVE
