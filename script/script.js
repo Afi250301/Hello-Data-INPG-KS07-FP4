@@ -1,3 +1,21 @@
+// script button pd input
+let btn = document.querySelector(".mb-3"),
+    spinIcon = document.querySelector(".spinner"),
+    btnText = document.querySelector(".btn-text");
+
+    btn.addEventListener("click", () => {
+    btn.style.cursor = "wait";
+    btn.classList.add("checked");
+    spinIcon.classList.add("spin");
+    btnText.textContent = "Loading";
+setTimeout(() => {
+    btn.style.pointer = "wait";
+    spinIcon.classList.replace("spinner","check");
+    spinIcon.classList.replace("bi-arrow-clockwise","bi-check-lg");
+    btnText.textContent = "Done";
+}, 5000)
+});
+
 const weatherPic = document.getElementById("weatherPic"); //gambar cuaca
 const temp = document.getElementById("temp"); //label suhu di kiri
 const time = documet.getElementById("time"); //label waktu update di kiri

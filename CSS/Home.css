@@ -68,11 +68,42 @@
     margin-left: 20px;
 }
 .btn{
+    display: flex;
+    align-items: center;
+    padding: 10px 26px;
     width: 120px;
     border-radius: 20px;
     border: none;
     background-color: darkblue;
     cursor: pointer;
+    user-select: none;
+}
+.button.checked .icon{
+    display: flex;
+}
+.btn .icon{
+    width: 28px;
+    color: white;
+    margin-right: 5px;
+    align-items: center;
+    display: none;
+}
+.icon.spinner.spin{
+    animation: spin 1.3s ease-in-out infinite;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.icon.check{
+    height: 28px;
+    width: 28px;
+    align-items: center;
+    justify-content: center;
+}
+.button .btn-text{
+    font-size: 20pt;
 }
 
 /* grafik suhu belum responsiv*/ 
