@@ -28,7 +28,7 @@ async function getData () {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'e5ab1f03afmshd88df2d477f5c04p1b8fe5jsnf39836997ae2',
+            'X-RapidAPI-Key': 'API KEY', //INPUT API KEY
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
