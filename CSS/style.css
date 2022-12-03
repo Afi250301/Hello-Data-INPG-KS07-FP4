@@ -1,0 +1,62 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+#mainContainer {
+    max-width: 90vw;
+    margin-top: 5vh;
+    padding: 10px;
+    border-radius: 25px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#leftPane {
+    width: 40%;
+    min-width: 310px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#rightPane {
+    width: 60%;
+    min-width: 600px;
+    padding: 10px;
+    background: lightgray;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.leftItem{
+    margin: 10px;
+}
+
+.rightContainer{
+    width: 100%;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+}
+
+.kondisi-title{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.kondisi-title-p{
+    width: auto;
+    max-width: 50px;
+}
+
+.kondisi-title-a{
+    width: auto;
+    max-width: 200px;
+}
