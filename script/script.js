@@ -28,7 +28,7 @@ async function getData() {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'fb05d6454dmshcb938662e457cadp113e7djsnec78cbf5fb08', //INPUT API KEY
+            'X-RapidAPI-Key': 'fb05d6454dmshcb938662e457cadp113e7djsnec78cbf5fb08',
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
@@ -46,7 +46,7 @@ async function getData() {
     }
 }
 
-const displayStats = (data) => { //kurang peluang hujan, waktu akses
+const displayStats = (data) => {
     let currentHour = moment().format("h");
     let currentTime = moment().format("dddd, h:mm a")
     let lastUpdate = moment().format("h.00 a")
@@ -130,7 +130,6 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
         plugins: {
             legend: {
                 labels: {
-                    // This more specific font property overrides the global property
                     font: {
                         size: 12
                     }
