@@ -25,11 +25,15 @@ body, html {
 
 #rightPane {
     width: 60%;
-    /* min-width: 600px; */
     padding: 10px;
-    background: lightgray;
+    background-color: aquamarine;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+}
+@media only screen and (max-width: 884px) {
+    #rightPane{
+        border-radius: 25px;
+    }
 }
 
 .leftItem{
@@ -44,10 +48,6 @@ body, html {
     display: flex;
     justify-content: center;
 }
-
-/* .grafik{
-    min-height: 300px;
-} */
 
 .kondisi-title{
     font-weight: bold;
