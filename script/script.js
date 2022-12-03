@@ -33,17 +33,6 @@ const inputButton = document.getElementById("inputButton");
 let chosenCity;
 let chosenDate;
 
-const onSubmit = () => {
-    chosenCity = inputCity.value;
-    chosenDate = inputDate.value;
-    console.log('city = ', chosenCity); //REMOVE
-    console.log('date = ', chosenDate); //REMOVE
-
-    chosenCity = chosenCity.replace(/\s/g, '%20')
-    console.log('chosenCity =', chosenCity); //REMOVE
-    getData();
-} 
-
 async function getData () {
     const options = {
         method: 'GET',
@@ -61,6 +50,7 @@ async function getData () {
         return displayStats(data);
     } catch (err) {
         console.log("failed to fetch : ", err); //REMOVE when submit
+        failNotice();
     }
 }
 
@@ -85,4 +75,24 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
 
 }
 
-getData();
+const onType = () => {
+    inputCity.classList.remove('error');
+    inputDate.classList.remove('error');
+}
+
+const onSubmit = () => {
+    chosenCity = inputCity.value;
+    chosenDate = inputDate.value;
+    console.log('city = ', chosenCity); //REMOVE
+    console.log('date = ', chosenDate); //REMOVE
+
+    chosenCity = chosenCity.replace(/\s/g, '%20')
+    console.log('chosenCity =', chosenCity); //REMOVE
+    getData();
+} 
+
+const failNotice = () => {
+    inputCity.classList.add('error');
+    inputDate.classList.add('error');
+    $("#inputCity").notify("City Not Found");
+}
