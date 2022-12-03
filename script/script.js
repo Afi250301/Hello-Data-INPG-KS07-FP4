@@ -1,20 +1,3 @@
-let btn = document.querySelector(".mb-3"),
-    spinIcon = document.querySelector(".spinner"),
-    btnText = document.querySelector(".btn-text");
-
-    btn.addEventListener("click", () => {
-    btn.style.cursor = "wait";
-    btn.classList.add("checked");
-    spinIcon.classList.add("spin");
-    btnText.textContent = "Loading";
-setTimeout(() => {
-    btn.style.pointer = "wait";
-    spinIcon.classList.replace("spinner","check");
-    spinIcon.classList.replace("bi-arrow-clockwise","bi-check-lg");
-    btnText.textContent = "Done";
-}, 5000)
-});
-
 const weatherPic = document.getElementById("weatherPic"); //gambar cuaca
 const temp = document.getElementById("temp"); //label suhu di kiri
 const temp2 = document.getElementById("temp2");
@@ -25,13 +8,19 @@ const windSpeed = document.getElementById("windSpeed");
 const windPressure = document.getElementById("windPressure")
 const rainChance = document.getElementById("rainChance"); //label logo hujan disebelah kiri
 const update = document.getElementById("update");
+const weatherIcon = document.getElementById("weatherIcon");
 const cityLabel = document.getElementById("cityLabel"); //label nama city yang terpilih
 const inputCity = document.getElementById("inputCity");
 const inputDate = document.getElementById("date");
 const inputButton = document.getElementById("inputButton");
+const btnText = document.querySelector("#btn-text");
 
 let chosenCity;
 let chosenDate;
+
+
+// const spinIcon = document.querySelector("#spinner");
+
 
 async function getData () {
     const options = {
@@ -43,14 +32,16 @@ async function getData () {
     };
 
     try{
+        // isLoading();
         const resp = await fetch(`https://weatherapi-com.p.rapidapi.com/history.json?q=${chosenCity}&dt=${chosenDate}&lang=en`, options)
         const data = await resp.json();
         console.log(data); // REMOVE 
         console.log('feels like',data.forecast.forecastday[0].hour[5].feelslike_c);//REMOVE
-        return displayStats(data);
+        return displayStats(data), isDone();
     } catch (err) {
         console.log("failed to fetch : ", err); //REMOVE when submit
         failNotice();
+        isDone();
     }
 }
 
@@ -59,7 +50,9 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
     let currentTime = moment().format("dddd, h:mm a")
     let lastUpdate = moment().format("h.00 a")
     let {humidity, temp_c, feelslike_c, gust_kph:wind, pressure_mb:pressure, chance_of_rain:rain} = data.forecast.forecastday[0].hour[currentHour];
-    let {text:condition} = data.forecast.forecastday[0].hour[currentHour].condition;
+    let {text:condition, icon} = data.forecast.forecastday[0].hour[currentHour].condition;
+    let {country, name} = data.location;
+    
     console.log('humidity ', humidity);
     console.log('condition', condition);
 
@@ -72,7 +65,10 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
     windPressure.firstChild.nodeValue = pressure + ' mb';
     rainChance.firstChild.nodeValue = rain + '%';
     update.firstChild.nodeValue = lastUpdate;
+    cityLabel.firstChild.nodeValue = `${name}, ${country}`;
 
+    console.log(icon.replace("/", '').replace("/", ''));
+    weatherIcon.src = 'https://' + icon;
 }
 
 const onType = () => {
@@ -81,6 +77,8 @@ const onType = () => {
 }
 
 const onSubmit = () => {
+    isLoading()
+
     chosenCity = inputCity.value;
     chosenDate = inputDate.value;
     console.log('city = ', chosenCity); //REMOVE
@@ -95,4 +93,17 @@ const failNotice = () => {
     inputCity.classList.add('error');
     inputDate.classList.add('error');
     $("#inputCity").notify("City Not Found");
+}
+
+const isLoading = () => {
+    inputButton.textContent = "Loading";
+    inputButton.style.cursor = "wait";
+}
+
+const isDone = () => {
+    inputButton.style.cursor = "pointer";
+    inputButton.textContent = "Done";
+    setTimeout(()=> {
+        inputButton.textContent = "Search";
+    },1500)
 }

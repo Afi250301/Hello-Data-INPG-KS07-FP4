@@ -55,6 +55,10 @@
 }
 /* bagian kiri */
 
+#weatherText{
+    font-size: 1.5em;
+}
+
 /* bagian kanan */
 .col-8{
     background-color: #DCDCDC;
