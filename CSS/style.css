@@ -60,3 +60,21 @@ body, html {
     width: auto;
     max-width: 200px;
 }
+
+.info-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-info{
+    background: white;
+    width: 30%;
+    margin: 5px;
+    border-radius: 15px;
+    padding: 5px;
+    display: flex;
+}
+
+.weather-info svg{
+    margin-right: 10px;
+}
