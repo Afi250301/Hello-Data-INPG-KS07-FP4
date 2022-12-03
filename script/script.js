@@ -1,15 +1,15 @@
-const weatherPic = document.getElementById("weatherPic"); //gambar cuaca
-const temp = document.getElementById("temp"); //label suhu di kiri
+const weatherPic = document.getElementById("weatherPic"); 
+const temp = document.getElementById("temp"); 
 const temp2 = document.getElementById("temp2");
-const time = document.getElementById("time"); //label waktu update di kiri
-const weatherText = document.getElementById("weatherText"); //label tulisan weather
+const time = document.getElementById("time"); 
+const weatherText = document.getElementById("weatherText"); 
 const humidityLabel = document.getElementById("humidityLabel");
 const windSpeed = document.getElementById("windSpeed");
 const windPressure = document.getElementById("windPressure")
-const rainChance = document.getElementById("rainChance"); //label logo hujan disebelah kiri
+const rainChance = document.getElementById("rainChance"); 
 const update = document.getElementById("update");
 const weatherIcon = document.getElementById("weatherIcon");
-const cityLabel = document.getElementById("cityLabel"); //label nama city yang terpilih
+const cityLabel = document.getElementById("cityLabel");
 const inputCity = document.getElementById("inputCity");
 const inputDate = document.getElementById("date");
 const inputButton = document.getElementById("inputButton");
@@ -18,9 +18,11 @@ const btnText = document.querySelector("#btn-text");
 let chosenCity;
 let chosenDate;
 
-
-// const spinIcon = document.querySelector("#spinner");
-
+inputCity.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      onSubmit();
+    }
+});
 
 async function getData () {
     const options = {
@@ -32,14 +34,11 @@ async function getData () {
     };
 
     try{
-        // isLoading();
+        isLoading()
         const resp = await fetch(`https://weatherapi-com.p.rapidapi.com/history.json?q=${chosenCity}&dt=${chosenDate}&lang=en`, options)
         const data = await resp.json();
-        console.log(data); // REMOVE 
-        console.log('feels like',data.forecast.forecastday[0].hour[5].feelslike_c);//REMOVE
         return displayStats(data), isDone();
     } catch (err) {
-        console.log("failed to fetch : ", err); //REMOVE when submit
         failNotice();
         isDone();
     }
@@ -53,8 +52,6 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
     let {text:condition, icon} = data.forecast.forecastday[0].hour[currentHour].condition;
     let {country, name} = data.location;
     
-    console.log('humidity ', humidity);
-    console.log('condition', condition);
 
     temp.firstChild.nodeValue = temp_c + '\u00B0C';
     time.firstChild.nodeValue = currentTime;
@@ -67,7 +64,6 @@ const displayStats = (data) => { //kurang peluang hujan, waktu akses
     update.firstChild.nodeValue = lastUpdate;
     cityLabel.firstChild.nodeValue = `${name}, ${country}`;
 
-    console.log(icon.replace("/", '').replace("/", ''));
     weatherIcon.src = 'https://' + icon;
 }
 
@@ -77,15 +73,10 @@ const onType = () => {
 }
 
 const onSubmit = () => {
-    isLoading()
-
     chosenCity = inputCity.value;
     chosenDate = inputDate.value;
-    console.log('city = ', chosenCity); //REMOVE
-    console.log('date = ', chosenDate); //REMOVE
 
     chosenCity = chosenCity.replace(/\s/g, '%20')
-    console.log('chosenCity =', chosenCity); //REMOVE
     getData();
 } 
 
